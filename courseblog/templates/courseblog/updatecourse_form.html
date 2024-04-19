@@ -1,0 +1,58 @@
+{% extends 'courseblog/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!--=================================
+        BREADCRUMB START
+    ==================================-->
+    <section class="tf__breadcrumb" style="background: url(images/breadcrumb_bg_1.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tf__breadcrumb_text">
+                        <h2>update course</h2>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">update course</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+        BREADCRUMB END
+    ==================================-->
+
+
+    <!--=================================
+        CONTACT PAGE START
+    ==================================-->
+    <section class="tf__contact_page mt_190 xs_mt_95">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12 col-lg-6 wow fadeInLeft" data-wow-duration="1.5s">
+                    <div class="tf__contact_form">
+                        <div class="tf__heading_area tf__heading_area_left mb_25">
+                            <h5>Update Course</h5>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    {{ form|crispy}}
+                                </div>
+                                <div class="col-xl-12">
+                                    <button type="submit" class="common_btn_2">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+        CONTACT PAGE END
+    ==================================-->
+
+{% endblock content %}

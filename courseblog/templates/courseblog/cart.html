@@ -1,0 +1,75 @@
+{% extends 'courseblog/index.html' %}
+{% block content %}
+<section class="tf__courses_page mt_190 xs_mt_95">
+    <!-- Quantity and Price Section -->
+    <div class='container'>
+        <div class="row">
+            <table class="table table-light table-hover">
+                <thead>
+                <tr>
+                    <th scope="col"><button type="button" class="btn btn-primary btn-lg">Continue Shopping →</button></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                <tr>
+                    <th scope="row"><h3><strong>Items: {{cart.quantity}} </strong></h3></th>
+                    <td></td>
+                    <td><h3><strong>Total: ₦{{cart.grandtotal | floatformat:2}}</strong></h3></td>
+                    <!-- <td></td> -->
+                    
+                    <td>
+                    <a href = "{% url 'checkout' %}">
+                        <button type="button" class="btn btn-primary btn-lg">Checkout →</button></a></td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+        <!-- Cart Section -->
+    <div class='container'>
+        <div class="row">
+            <table class="table table-light table-hover table-sm">
+                <div class="row">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"><h3><strong>Item</strong></h3></th>
+                        <th scope="col"><h3><strong>Price</strong></h3></th>
+                        <th scope="col"><h3><strong>Quantity</strong></h3></th>
+                        <th scope="col"><h3><strong>Total</strong></h3></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for item in cartitems %}
+                    <tr>
+                        <th scope="row"><div><img src ='{{item.product.image.url}}' width="500" height="600"></div></th>
+                        <td><h6>{{item.product.name}}</h6></td>
+                        <td><h6>₦{{item.product.price}}</h6></td>
+                        <td><input type = 'number'data-product="{{item.product.product_id}}" class ='quantity' value = "{{item.quantity}}" style = 'width: 50px; padding-left: 5px' min="0"></td>
+                        <td><h6>₦{{item.subtotal | floatformat:2}}</h6></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th scope="row"><div id = "cart_image"></div></th>
+                        <td><h3></h3></td>
+                        <td><h3></h3></td>
+                        <td></td>
+                        <td id ='total'><h5><strong>₦{{cart.grandtotal | floatformat:2}}</strong></h5></td>
+                    </tr>
+                    
+                    
+                    </tbody>
+                </div>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
